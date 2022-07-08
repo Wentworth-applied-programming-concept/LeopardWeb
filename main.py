@@ -7,6 +7,12 @@ from Classes.Student import Student
 from tkinter import *
 from tkinter import messagebox
 
+#---Password----
+# student = pass1235
+# instr = pass1234
+# admin = pass123
+
+
 def Dummy():
     pass
 
@@ -36,7 +42,7 @@ def logInAsStudent():
     dbRow = cursor.fetchone()
     studentUser = Student(dbRow[1],dbRow[2],dbRow[0])
     
-    mainCanvas.create_text(300, 30, text="Leopard Web accesed by: Admin "+ studentUser.firstName ,font=('Helvetica','14','bold'))
+    mainCanvas.create_text(300, 30, text="Leopard Web accesed by: "+ studentUser.firstName ,font=('Helvetica','14','bold'))
     mainCanvas.create_text(300, 100, text="Please select an item to continue: ",font=('Helvetica','11'))
     
     searchAllBttn = Button(root, text="Search all Courses", font=('Helvetica','11'), command=Dummy, width=30 )

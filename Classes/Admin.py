@@ -1,5 +1,9 @@
 from Classes.User import User
-
+import sqlite3
+import sys
+# setting path
+sys.path.append('../LeopardWeb')
+from dbConnection import *
 
 class Admin(User):
     # constructor
@@ -25,6 +29,12 @@ class Admin(User):
     def removeStudentFromCourse(self, studentID, courseName):
         print(f"You have removed a student from the course: {courseName}\n")
 
-    def searchCourseAndPrintRoster(self, courseName):
-        print(f"The roster for the course {courseName} is:\n")
+    def searchCourseAndPrintRoster(self, courseInfo):
+        print(f"The roster for the course {courseInfo} is:\n")
         print(f"Student 1 - Student 2 - ...........")
+
+        #search
+        cursor.execute("""SELECT * FROM COURSE WHERE CRN OR TITLE = ? """, (courseInfo))
+
+        query_result = cursor.fetchone()
+        return query_result 
