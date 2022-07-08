@@ -9,23 +9,20 @@ class Student(User):
     # constructor
     def __init__(self, firstName, lastName, ID):
        super().__init__(firstName,lastName, ID)
+       self.schedule=[]
 
     def searchCourse(self, courseInfo ):
-        # print(f"{self.firstName} is looking for the course: {courseInfo} ....\n")
-        # cursor.execute("""SELECT * FROM COURSE WHERE CRN, DAY, TIME = ? """, (courseInfo))
-        # cursor.execute("""SELECT * FROM COURSE WHERE DAY = ? """, (courseInfo))
-        # cursor.execute("""SELECT * FROM COURSE WHERE TIME = ? """, (courseInfo))
-        # cursor.execute("""SELECT * FROM COURSE WHERE DEPARTMENT = ? """, (courseInfo))
-        cursor.execute("""SELECT * FROM COURSE WHERE CRN OR TITLE = ? """, (courseInfo))
+        cursor.execute("""SELECT * FROM COURSE WHERE CRN = ? OR TITLE= ?  """, (courseInfo, courseInfo))
 
         query_result = cursor.fetchone()
         return query_result 
 
     def addCourse(self, courseName):
-        print(f"{self.firstName} added the course: {courseName} to his/her schedule.")
+       self.schedule.append(courseName)
 
     def dropCourse(self, courseName):
-        print(f"{self.firstName} dropped the course: {courseName} from his/her schedule.")
+        self.schedule.remove(courseName)
+
 
     def printSchedule(self):
-        print(f"{self.firstName} is printing his/her schedule....")
+        pass

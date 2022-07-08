@@ -1,5 +1,10 @@
 from Classes.User import User
 
+import sys
+# setting path
+sys.path.append('../LeopardWeb')
+from dbConnection import *
+
 class Instructor(User):
     # constructor
     def __init__(self, firstName, lastName, ID):
@@ -13,6 +18,8 @@ class Instructor(User):
         print(
             f"Prof. {self.lastName} has the following class to teach this semester ....")
 
-    def searchCourse(self, courseName):
-        print(
-            f"Prof. {self.lastName} is looking for the course: {courseName} ....\n")
+    def searchCourse(self, courseInfo):
+        cursor.execute("""SELECT * FROM COURSE WHERE CRN = ? OR TITLE= ?  """, (courseInfo, courseInfo))
+
+        query_result = cursor.fetchone()
+        return query_result 
