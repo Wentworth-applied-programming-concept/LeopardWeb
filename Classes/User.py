@@ -1,3 +1,12 @@
+import sqlite3
+import sys
+import os
+current = os.path.dirname(os.path.realpath(__file__)) 
+parent = os.path.dirname(current)
+sys.path.append(parent)
+from dbConnection import *
+
+
 class User():
     # constructor
     def __init__(self, firstName, lastName, ID):

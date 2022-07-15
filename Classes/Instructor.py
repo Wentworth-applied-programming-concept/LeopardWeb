@@ -1,9 +1,6 @@
 from Classes.User import User
+from Classes.User import *
 
-import sys
-# setting path
-sys.path.append('../LeopardWeb')
-from dbConnection import *
 
 class Instructor(User):
     # constructor

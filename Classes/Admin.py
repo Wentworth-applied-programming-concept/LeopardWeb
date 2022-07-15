@@ -1,9 +1,6 @@
 from Classes.User import User
-import sqlite3
-import sys
-# setting path
-sys.path.append('../LeopardWeb')
-from dbConnection import *
+from Classes.User import *
+
 
 class Admin(User):
     # constructor
