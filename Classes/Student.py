@@ -1,9 +1,5 @@
 from Classes.User import User
-import sqlite3
-import sys
-# setting path
-sys.path.append('../LeopardWeb')
-from dbConnection import *
+from Classes.User import *
 
 class Student(User):
     # constructor
@@ -15,6 +11,7 @@ class Student(User):
         cursor.execute("""SELECT * FROM COURSE WHERE CRN = ? OR TITLE= ?  """, (courseInfo, courseInfo))
 
         query_result = cursor.fetchone()
+        print(type(query_result))
         return query_result 
 
     def addCourse(self, courseName):
